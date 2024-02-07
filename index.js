@@ -1,7 +1,7 @@
 'use strict'
 
-import { randomBytes } from 'react-native-get-random-values'
-exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = randomBytes
+import { getRandomValues } from 'react-native-get-random-values'
+exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = getRandomValues
 
 // implement window.getRandomValues(), for packages that rely on it
 if (typeof window === 'object') {
