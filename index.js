@@ -1,7 +1,6 @@
 'use strict'
 
-import { getRandomValues } from 'react-native-get-random-values'
-exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = getRandomValues
+import 'react-native-get-random-values'
 
 // implement window.getRandomValues(), for packages that rely on it
 if (typeof window === 'object') {
@@ -9,11 +8,11 @@ if (typeof window === 'object') {
   if (!window.crypto.getRandomValues) {
     window.crypto.getRandomValues = function getRandomValues (arr) {
       let orig = arr
-      if (arr.byteLength != arr.length) {
+      if (arr.byteLength !== arr.length) {
         // Get access to the underlying raw bytes
         arr = new Uint8Array(arr.buffer)
       }
-      const bytes = randomBytes(arr.length)
+      const bytes = window.crypto.randomBytes(arr.length)
       for (var i = 0; i < bytes.length; i++) {
         arr[i] = bytes[i]
       }
